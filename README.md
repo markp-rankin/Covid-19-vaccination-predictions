@@ -39,3 +39,18 @@ I took a multi-method approach to analyzing the data as shown in the graphic bel
 
 
 ## Takeaways and Recommendations
+Based on this analysis, the key takeaways are: 
+1) A relatively short survey can be used to help predict if someone got vaccinated or not, at least in the case of the H1N1 virus.
+2) The most important predictors for machine learning classification models (and corroborated via clustering) included opinions about the virus and a recommenndation from a doctor.
+3) Since public information plays a big role in shaping opinions, topics and concepts can be gleaned from social media (tweets) to understand concerns and misinformation regarding vaccines and vaccination programs.
+4) The findings of this analysis can serve as a feedback loop to help refine and field future surveys and data collection efforts.
+
+This leads me to the following recommendations: 
+1) Ensure that doctors, at all levels, are recommending to patients that they get vaccinated. This raises issues of equity and access to healthcare and systemic racism). People of authority in the community can potentailly serve as a proxy for doctor / medical recommendations.  
+2) Opinions shape peoples behavior and are an important factor especially in understanding the risk posed by a pandemic, and the methods we can use to prevent the spread and to eliminate it (vaccine / vaccination efforts). We need to ensure there is accurate, clear, and persuassive information avaialble to all.  
+3) Further explore what people need to be targeted with information and education programs, based on age, education, and occupation. Although not part of this analysis, location could also be a key factor. 
+4) Keep alert to trending topics to counter misinformation, conspiracy theories, and politically motivated untruths and distrust of science, government, etc. There is a need to bridge the competing messagages at the state versus federal level (this has only been made more difficult by the recent political climate). 
+
+
+
+
