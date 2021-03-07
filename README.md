@@ -10,11 +10,8 @@ So I decided to look to the past, and hopefully gain some understanding around w
 ## Analysis Questions
 This led me to 4 key questions: 
 1) Can we use results of a public opinion survey to predict if people did or did not get an H1N1 vaccination? If so, how well can it predict? 
-
 2) What are the key factors that help predict if people did or did not get vaccinated?
-
 3) Are there any other underlying patterns or groupings that can help us identify who did or did not get vaccinated? 
-
 4) And then linking this to the present… To improve chances of more people getting vaccinated, what questions about the COVID vaccine and vaccination need to be addressed? What are the concerns and misperceptions? 
 
 
@@ -28,14 +25,23 @@ I took a multi-method approach to analyzing the data as shown in the graphic bel
 
 
 ## A: Classification Modeling
+Preprocessing: The data conssted of a combination of numeric and categorical variables. A combination of Ordinal Encoer and One-Hot Encoding to change categorical values to numerical. I decided to keep as much of the dataset as possible, so used KNN Imputing to address missing values. Standard Scaler was used to make sure variables were all of a similar magnitude. SMOTE was tried as a way to address the class imbalance 4 to 1, but this resulted in limited improvement during modeling. In the end a total of 73 variables were included in the model.
 
+Modeling: Various data preperations were used across 6 classification models. The best performing model was XGBoost with an accuracy of 0.84 and a precission for class 1 (got vaccinated) of 0.71. This means that of the people the model missclassified 29% of people - predicting that they had been vaccinated when in fact they had not. This is important as it could mean people that needed additional vaccination informaiton may get overlooked.
+
+Important factors: After examining the feature importances from the model (Random Forest model), simplification of the model was done by reducing the number of variables to just those that were most important. The model perofrmance held for both 19 features and 10 features. As seen in the table below, a Doctor's recommendation, as well as opinions about the risk of catching the H1N1 and belief that the vaccine was effective contributed the most to the model. The demographics of age group and education contributed less, but were also importent. 
 
 
 ## B: Clustering
-
+To determine if there were any other patterns to who did'nt get vaccinated for H1N1, I conducted K-Means Clustering (an unsupervised learning approach) with the sub-set of respondents who had not gotten vaccinated (21K) and a set of 19 variables (the data included KNN Imputing and Standard Scaling). Three clusters were used (from 3 to 5 were suggested by an HAC dendrogram and K-Means inertia scores). There were a few meaningful patterns that corroborated the feature importances from the modeling. These distinctions betwen the three groups are shown below.
 
 
 ## C: Natural Language Processing (NLP)
+Twint was used to "scrape" Twitter for tweets from the past year. Both neutral search terms (covid vaccination) and negative search terms (covid death; vaccine choice) were used as I wanted to find tweets that contained negative and misinformation that might prevent people from gettign vaccinated. The TextBlob library was used to assign sentiment to each tweet and then the set of negative sentiment tweets were the focus of the analysis. After preprocessing of the text data, word counts - single, bi-grams, and tri-grams were examined, and then LDA (soft clustering) was used to look for additional topic groups. A small set of tweets was read for additional context and understanding. Through this analysis several themes emerged. This included: 
+a) vaccine focused: ineffective; rushed; not thouroughly tested; serious/longterm side effects (or death)
+b) vaccination process: forced; lack of freedom to choose; restrictions as a result of not getting vaccinated
+c) action oriented: sign petitions; protest vaccination sites; contact govt. officials
+d) news or celebrity focused (blame): Bill Gates; WHO; Dolly Parton; the church; government; big pharma; Jan Andolan
 
 
 ## Takeaways and Recommendations
