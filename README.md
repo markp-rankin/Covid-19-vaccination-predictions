@@ -1,6 +1,7 @@
 # Using Survey Data as a Predictor of Pandemic Vaccination
 Capstone Project by Mark Patterson, March 2021
 
+
 <img src = "images/cCUvaccine-needle-and-arm.jpg" width="600">
 
 
