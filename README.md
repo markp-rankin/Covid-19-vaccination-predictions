@@ -1,9 +1,8 @@
 # Using Survey Data as a Predictor of Pandemic Vaccination
 Capstone Project by Mark Patterson, March 2021
-
-
+<br>
 <img src = "images/cCUvaccine-needle-and-arm.jpg" width="600">
-
+<br>
 
 ## Introduction
 We are in the midst of a pandemic affecting all of us… here in the USA and globally. As of March 1st, just over a year into the COVID-19 pandemic, we have seen 29 million confirmed cases, and more than 525 thousand deaths -- in the USA alone. Vaccination against the virus is one of the key ways to curb it's spread. In the US, vaccinations began on Dec. 20th, but to date only 15.5% of population have had one dose and just 7.8% are fully vaccinated. For a vaccination approach to work, we need upwards of 80% of the population to be vaccinated. But unfortunately, not everyone is onboard with this. In a poll conducted in December, only 49% of adults under 65 said they were "absolutly certain," or "very likely" to get vaccinated.
@@ -27,7 +26,7 @@ To look at current day pandemic sentiment, I obtained approximately 60K Tweets a
 I took a multi-method approach to analyzing the data as shown in the graphic below. The steps built upon each other, and also served as a way to corroborate the findings.
 
 <img src = "images/Multi-Method Approach.JPG" width="600">
-
+<br>
 
 ## A: Classification Modeling
 **Preprocessing:** The data conssted of a combination of numeric and categorical variables. A combination of Ordinal Encoer and One-Hot Encoding to change categorical values to numerical. I decided to keep as much of the dataset as possible, so used KNN Imputing to address missing values. Standard Scaler was used to make sure variables were all of a similar magnitude. SMOTE was tried as a way to address the class imbalance 4 to 1, but this resulted in limited improvement during modeling. In the end a total of 73 variables were included in the model.
@@ -37,13 +36,13 @@ I took a multi-method approach to analyzing the data as shown in the graphic bel
 **Important factors:** After examining the feature importances from the model (Random Forest model), simplification of the model was done by reducing the number of variables to just those that were most important. The model perofrmance held for both 19 features and 10 features. As seen in the table below, a Doctor's recommendation, as well as opinions about the risk of catching the H1N1 and belief that the vaccine was effective contributed the most to the model. The demographics of age group and education contributed less, but were also importent. 
 
 <img src = "images/Feat_Import_final_11.JPG" width="400">
-
+<br>
 
 ## B: Clustering
 To determine if there were any other patterns to who did'nt get vaccinated for H1N1, I conducted K-Means Clustering (an unsupervised learning approach) with the sub-set of respondents who had not gotten vaccinated (21K) and a set of 19 variables (the data included KNN Imputing and Standard Scaling). Three clusters were used (from 3 to 5 were suggested by an HAC dendrogram and K-Means inertia scores). There were a few meaningful patterns that corroborated the feature importances from the modeling. These distinctions betwen the three groups are shown below.
 
 <img src = "images/Cluster-results-3.JPG" width="600">
-
+<br>
 
 ## C: Natural Language Processing (NLP)
 Twint was used to "scrape" Twitter for tweets from the past year. Both neutral search terms (covid vaccination) and negative search terms (covid death; vaccine choice) were used as I wanted to find tweets that contained negative and misinformation that might prevent people from gettign vaccinated. The TextBlob library was used to assign sentiment to each tweet and then the set of negative sentiment tweets were the focus of the analysis. After preprocessing of the text data, word counts - single, bi-grams, and tri-grams were examined, and then LDA (soft clustering) was used to look for additional topic groups. A small set of tweets was read for additional context and understanding. Through this analysis several themes emerged. This included: 
@@ -53,7 +52,7 @@ Twint was used to "scrape" Twitter for tweets from the past year. Both neutral s
 4) **news or celebrity focused (blame):** Bill Gates; WHO; Dolly Parton; the church; government; big pharma; Jan Andolan
 
 <img src = "images/protesters-2.jpg" width="600">
-
+<br>
 
 ## Takeaways and Recommendations
 Based on this analysis, the key takeaways are: 
@@ -62,7 +61,7 @@ Based on this analysis, the key takeaways are:
 3) Since public information plays a big role in shaping opinions, topics and concepts can be gleaned from social media (tweets) to understand concerns and misinformation regarding vaccines and vaccination programs.
 4) The findings of this analysis can serve as a feedback loop to help refine and field future surveys and data collection efforts.
 
-
+<br>
 This leads me to the following recommendations: 
 1) Ensure that doctors, at all levels, are recommending to patients that they get vaccinated. This raises issues of equity and access to healthcare and systemic racism). People of authority in the community can potentailly serve as a proxy for doctor / medical recommendations.  
 2) Opinions shape peoples behavior and are an important factor especially in understanding the risk posed by a pandemic, and the methods we can use to prevent the spread and to eliminate it (vaccine / vaccination efforts). We need to ensure there is accurate, clear, and persuassive information avaialble to all.  
