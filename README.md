@@ -1,6 +1,8 @@
 # Using Survey Data as a Predictor of Pandemic Vaccination
 Capstone Project by Mark Patterson, March 2021
 
+<img src = "images/cCUvaccine-needle-and-arm.jpg" width="500">
+
 ## Introduction
 We are in the midst of a pandemic affecting all of us… here in the USA and globally. As of March 1st, just over a year into the COVID-19 pandemic, we have seen 29 million confirmed cases, and more than 525 thousand deaths -- in the USA alone. Vaccination against the virus is one of the key ways to curb it's spread. In the US, vaccinations began on Dec. 20th, but to date only 15.5% of population have had one dose and just 7.8% are fully vaccinated. For a vaccination approach to work, we need upwards of 80% of the population to be vaccinated. But unfortunately, not everyone is onboard with this. In a poll conducted in December, only 49% of adults under 65 said they were "absolutly certain," or "very likely" to get vaccinated.
 
@@ -22,6 +24,7 @@ To look at current day pandemic sentiment, I obtained approximately 60K Tweets a
 
 I took a multi-method approach to analyzing the data as shown in the graphic below. The steps built upon each other, and also served as a way to corroborate the findings.
 
+<img src = "images/Multi-Method Approach.JPG" width="500">
 
 
 ## A: Classification Modeling
@@ -31,17 +34,23 @@ Modeling: Various data preperations were used across 6 classification models. Th
 
 Important factors: After examining the feature importances from the model (Random Forest model), simplification of the model was done by reducing the number of variables to just those that were most important. The model perofrmance held for both 19 features and 10 features. As seen in the table below, a Doctor's recommendation, as well as opinions about the risk of catching the H1N1 and belief that the vaccine was effective contributed the most to the model. The demographics of age group and education contributed less, but were also importent. 
 
+<img src = "images/Feat_Import_final_11.JPG" width="500">
+
 
 ## B: Clustering
 To determine if there were any other patterns to who did'nt get vaccinated for H1N1, I conducted K-Means Clustering (an unsupervised learning approach) with the sub-set of respondents who had not gotten vaccinated (21K) and a set of 19 variables (the data included KNN Imputing and Standard Scaling). Three clusters were used (from 3 to 5 were suggested by an HAC dendrogram and K-Means inertia scores). There were a few meaningful patterns that corroborated the feature importances from the modeling. These distinctions betwen the three groups are shown below.
 
+<img src = "images/Cluster-results-3.JPG" width="500">
+
 
 ## C: Natural Language Processing (NLP)
 Twint was used to "scrape" Twitter for tweets from the past year. Both neutral search terms (covid vaccination) and negative search terms (covid death; vaccine choice) were used as I wanted to find tweets that contained negative and misinformation that might prevent people from gettign vaccinated. The TextBlob library was used to assign sentiment to each tweet and then the set of negative sentiment tweets were the focus of the analysis. After preprocessing of the text data, word counts - single, bi-grams, and tri-grams were examined, and then LDA (soft clustering) was used to look for additional topic groups. A small set of tweets was read for additional context and understanding. Through this analysis several themes emerged. This included: 
-a) vaccine focused: ineffective; rushed; not thouroughly tested; serious/longterm side effects (or death)
-b) vaccination process: forced; lack of freedom to choose; restrictions as a result of not getting vaccinated
-c) action oriented: sign petitions; protest vaccination sites; contact govt. officials
-d) news or celebrity focused (blame): Bill Gates; WHO; Dolly Parton; the church; government; big pharma; Jan Andolan
+1) vaccine focused: ineffective; rushed; not thouroughly tested; serious/longterm side effects (or death)
+2) vaccination process: forced; lack of freedom to choose; restrictions as a result of not getting vaccinated
+3) action oriented: sign petitions; protest vaccination sites; contact govt. officials
+4) news or celebrity focused (blame): Bill Gates; WHO; Dolly Parton; the church; government; big pharma; Jan Andolan
+
+<img src = "images/protesters-2.jpg" width="500">
 
 
 ## Takeaways and Recommendations
@@ -56,7 +65,4 @@ This leads me to the following recommendations:
 2) Opinions shape peoples behavior and are an important factor especially in understanding the risk posed by a pandemic, and the methods we can use to prevent the spread and to eliminate it (vaccine / vaccination efforts). We need to ensure there is accurate, clear, and persuassive information avaialble to all.  
 3) Further explore what people need to be targeted with information and education programs, based on age, education, and occupation. Although not part of this analysis, location could also be a key factor. 
 4) Keep alert to trending topics to counter misinformation, conspiracy theories, and politically motivated untruths and distrust of science, government, etc. There is a need to bridge the competing messagages at the state versus federal level (this has only been made more difficult by the recent political climate). 
-
-
-
 
